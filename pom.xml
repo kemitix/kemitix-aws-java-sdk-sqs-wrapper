@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.kemitix</groupId>
+        <artifactId>kemitix-parent</artifactId>
+        <version>5.3.0</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>net.kemitix.aws</groupId>
+    <artifactId>kemitix-aws-java-sdk-sqs-wrapper</artifactId>
+    <version>1.11.874</version><!-- must match ${aws-java-sdk-sqs.version} to release -->
+
+    <description>
+        Wrapper for the AWS Java SDK for SQS - only releases when there
+        is a change that effects the SQS portion of the AWS Java SDK.
+    </description>
+
+    <properties>
+        <aws-java-sdk-sqs.version>1.11.874</aws-java-sdk-sqs.version>
+        <jackson-databind.version>2.11.3</jackson-databind.version>
+        <jackson-dataformat-cbor.version>2.11.3</jackson-dataformat-cbor.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <commons-codec.version>1.15</commons-codec.version>
+
+        <maven-graph-plugin.version>1.45</maven-graph-plugin.version>
+
+        <tiles-maven-plugin.version>2.17</tiles-maven-plugin.version>
+        <kemitix-tiles.version>2.7.0</kemitix-tiles.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-sqs</artifactId>
+            <version>${aws-java-sdk-sqs.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.dataformat</groupId>
+                    <artifactId>jackson-dataformat-cbor</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-cbor</artifactId>
+            <version>${jackson-dataformat-cbor.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>commons-logging</artifactId>
+            <groupId>commons-logging</groupId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <version>${tiles-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.fusesource.mvnplugins</groupId>
+                <artifactId>maven-graph-plugin</artifactId>
+                <version>${maven-graph-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>reactor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <direction>LR</direction>
+                    <hideTransitive>true</hideTransitive>
+                    <hideVersion>false</hideVersion>
+                    <hideOptional>true</hideOptional>
+                    <hideScopes>test,provided</hideScopes>
+                    <target>${project.basedir}/docs/images/reactor-graph.png</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
