@@ -22,8 +22,7 @@
 
     <properties>
         <aws-java-sdk-sqs.version>1.11.997</aws-java-sdk-sqs.version>
-        <jackson-databind.version>2.12.3</jackson-databind.version>
-        <jackson-dataformat-cbor.version>2.12.3</jackson-dataformat-cbor.version>
+        <jackson.version>2.12.3</jackson.version>
         <commons-logging.version>1.2</commons-logging.version>
         <commons-codec.version>1.15</commons-codec.version>
 
@@ -60,12 +59,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-cbor</artifactId>
-            <version>${jackson-dataformat-cbor.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <artifactId>commons-logging</artifactId>
