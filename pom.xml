@@ -13,7 +13,7 @@
 
     <groupId>net.kemitix.aws</groupId>
     <artifactId>kemitix-aws-java-sdk-sqs-wrapper</artifactId>
-    <version>1.12.9</version><!-- must match ${aws-java-sdk-sqs.version} to release -->
+    <version>1.12.16</version><!-- must match ${aws-java-sdk-sqs.version} to release -->
 
     <description>
         Wrapper for the AWS Java SDK for SQS - only releases when there
@@ -21,7 +21,7 @@
     </description>
 
     <properties>
-        <aws-java-sdk-sqs.version>1.12.9</aws-java-sdk-sqs.version>
+        <aws-java-sdk-sqs.version>1.12.16</aws-java-sdk-sqs.version>
         <jackson.version>2.12.3</jackson.version>
         <commons-logging.version>1.2</commons-logging.version>
         <commons-codec.version>1.15</commons-codec.version>
@@ -91,28 +91,39 @@
                     </tiles>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.fusesource.mvnplugins</groupId>
-                <artifactId>maven-graph-plugin</artifactId>
-                <version>${maven-graph-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>reactor</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <direction>LR</direction>
-                    <hideTransitive>true</hideTransitive>
-                    <hideVersion>false</hideVersion>
-                    <hideOptional>true</hideOptional>
-                    <hideScopes>test,provided</hideScopes>
-                    <target>${project.basedir}/docs/images/reactor-graph.png</target>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>graphviz</id>
+            <!--  mvn -B -P graphviz validate -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.fusesource.mvnplugins</groupId>
+                        <artifactId>maven-graph-plugin</artifactId>
+                        <version>${maven-graph-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>reactor</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <direction>LR</direction>
+                            <hideTransitive>true</hideTransitive>
+                            <hideVersion>true</hideVersion>
+                            <hideOptional>true</hideOptional>
+                            <hideScopes>test</hideScopes>
+                            <target>${project.basedir}/docs/images/reactor-graph.png</target>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+         
 </project>
