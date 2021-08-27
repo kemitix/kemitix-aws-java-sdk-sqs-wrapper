@@ -21,7 +21,7 @@
     </description>
 
     <properties>
-        <aws-java-sdk-sqs.version>1.12.45</aws-java-sdk-sqs.version>
+        <aws-java-sdk-sqs.version>1.12.56</aws-java-sdk-sqs.version>
         <jackson.version>2.12.4</jackson.version>
         <commons-logging.version>1.2</commons-logging.version>
         <commons-codec.version>1.15</commons-codec.version>
