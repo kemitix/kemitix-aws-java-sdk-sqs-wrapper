@@ -13,7 +13,7 @@
 
     <groupId>net.kemitix.aws</groupId>
     <artifactId>kemitix-aws-java-sdk-sqs-wrapper</artifactId>
-    <version>1.12.59</version><!-- must match ${aws-java-sdk-sqs.version} to release -->
+    <version>1.12.78</version><!-- must match ${aws-java-sdk-sqs.version} to release -->
 
     <description>
         Wrapper for the AWS Java SDK for SQS - only releases when there
@@ -21,7 +21,7 @@
     </description>
 
     <properties>
-        <aws-java-sdk-sqs.version>1.12.59</aws-java-sdk-sqs.version>
+        <aws-java-sdk-sqs.version>1.12.78</aws-java-sdk-sqs.version>
         <jackson.version>2.12.5</jackson.version>
         <commons-logging.version>1.2</commons-logging.version>
         <commons-codec.version>1.15</commons-codec.version>
